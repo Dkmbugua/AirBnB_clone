@@ -13,16 +13,14 @@ class BaseModel:
 
     def __str__(self):
         """provides a readable string representation of the instance"""
-        return f'{self.__class__.__name__}({self.id}), {self.__dict__}'
+        return "[{}] ({}) {}".format(self.__class__.__name__,
+                                     self.id, self.__dict__)
 
 
     def save(self):
-        """it updates the update_at attribute with the current time"""
+        """it updates the updated_at attribute with the current date"""
         self.updated_at = datetime.now()
-        try:
-            models.storage.save(self)
-        except Exception as e:
-            print(f"An error occured while saving: {e}")
+        models.storage.save
 
 
     def to_dict(self):
